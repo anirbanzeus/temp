@@ -3,14 +3,23 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BadgeComponent } from './badge/badge.component';
+import { ViewTasksComponent } from './components/view-tasks/view-tasks.component';
+import { TasksComponent } from './components/tasks/tasks.component';
+import { MatSliderModule, MatCard } from '@angular/material';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BadgeComponent,
+    ViewTasksComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSliderModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.mat-slider.mat-slider-horizontal .mat-slider-wrapper {
+    top: 12px;
+    width: 220px;
+  }
+  #beforeImage {
+    padding-left:77px;
+    display: inline-block; /* or block */
+   /* demo 
+    background: red*/
+   
+  }
+  .content {
+    padding-left:6%;
+    width:68%;
+}
