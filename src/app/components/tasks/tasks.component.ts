@@ -38,8 +38,7 @@ export class TasksComponent implements OnInit {
   ngOnInit() {
   }
 
-  onClickMe(taskName) {
-    console.log('11111');
+  onClickMe() {    
     console.log(this.taskForm.controls.taskPriority.value);
   }
 
