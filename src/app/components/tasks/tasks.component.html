@@ -1,14 +1,13 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
 <div class="content">
     <div class="card border-secondary mb-3" style="max-width: 26rem;">
         <div class="card bg-light" >
             <div class="card-body px-3">
-                <!--<h5 class="card-title">Task Detail</h5>
-        <a href="#" class="btn btn-primary">Go somewhere</a>-->
                 <table class="table borderless">
                     <tbody>
                         <tr>
                             <td>Task</td>
-                            <td><input type="text" class="form-control" name="nato_pf" width="100%" /></td>
+                            <td><input type="text" placeholder="Nam of task" formControlName="taskName" class="form-control" name="taskName" width="100%" /></td>
                         </tr>
                         <tr>
                             <td vertical-align="middle"> Priority</td>
@@ -17,7 +16,7 @@
                                     <span class="text-small">1</span>
                                     <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max"
                                         [min]="min" [step]="step" [thumbLabel]="thumbLabel" [tickInterval]="tickInterval"
-                                        [vertical]="vertical">
+                                        [vertical]="vertical" formControlName="taskPriority">
                                     </mat-slider>
                                     <span id="beforeImage">30</span>
                                 </div>
@@ -25,17 +24,17 @@
                         </tr>
                         <tr>
                             <td>Parent Task</td>
-                            <td><input type="text" class="form-control" name="nato_pf" width="100%" /></td>
+                            <td><input type="text" formControlName="parentTask" class="form-control" name="nato_pf" width="100%" /></td>
                         </tr>
                         <tr>
                             <td>Start Date</td>
-                            <td><input type="text" class="form-control" name="nato_pf" width="100%" /></td>
+                            <td><input type="text" formControlName="startDate" class="form-control" name="nato_pf" width="100%" /></td>
                         </tr>
                         <tr>
                             <td>End Date</td>
-                            <td><input type="text" class="form-control" name="nato_pf" width="100%" />
+                            <td><input type="text" formControlName="endDate" class="form-control" name="nato_pf" width="100%" />
                                 <p></p>
-                                <button type="button" class="btn btn-primary btn-md mr-3 ml-4" style="padding:5px;"  (click)="onClickMe()">Add
+                                <button type="button" class="btn btn-primary btn-md mr-3 ml-4" style="padding:5px;"  (click)="onClickMe(taskName.value)">Add
                                     Task</button>
                                 <button type="button" class="btn btn-secondary btn-md ml-4" type="reset">Reset</button>
                             </td>
@@ -46,3 +45,4 @@
         </div>
     </div>
 </div>
+</form>

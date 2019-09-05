@@ -7,6 +7,7 @@ import { BadgeComponent } from './badge/badge.component';
 import { ViewTasksComponent } from './components/view-tasks/view-tasks.component';
 import { TasksComponent } from './components/tasks/tasks.component';
 import { MatSliderModule, MatCard } from '@angular/material';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,9 @@ import { MatSliderModule, MatCard } from '@angular/material';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatSliderModule
-    
+    MatSliderModule,
+    FormsModule,
+    ReactiveFormsModule    
   ],
   providers: [],
   bootstrap: [AppComponent]

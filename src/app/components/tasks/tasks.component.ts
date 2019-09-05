@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-tasks',
@@ -7,28 +8,39 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TasksComponent implements OnInit {
 
-  autoTicks = false;
+  taskForm: FormGroup;
+
+  autoTicks = true;
   disabled = false;
   invert = false;
-  max = 100;
+  max = 30;
   min = 0;
-  showTicks = false;
+  showTicks = true;
   step = 1;
   thumbLabel = false;
   value = 0;
   vertical = false;
-  taskName: string;
-  parentTask: string;
-  startDate:Date;
-  endDate: Date
+  taskName = new FormControl('');
+  parentTask= new FormControl('');
+  startDate= new FormControl('');
+  endDate= new FormControl('');
 
-  constructor() { }
+  constructor(private fb: FormBuilder) {
+    this.taskForm = this.fb.group({
+      taskName:[''],
+      parentTask:[''],
+      startDate:[''],
+      endDate:[''],
+      taskPriority:['']
+    });
+   }
 
   ngOnInit() {
   }
 
-  onClickMe() {
-    console.log('111111');
+  onClickMe(taskName) {
+    console.log('11111');
+    console.log(this.taskForm.controls.taskPriority.value);
   }
 
 }
