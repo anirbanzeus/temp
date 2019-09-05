@@ -1,7 +1,16 @@
 export class TaskDetail{
 
-    constructor(public title: string, public summary: string){
-        
-    }
+  taskName: string;
+  parentTask: string;
+  startDate:Date;
+  endDate: Date
+
+  constructor(taskName, parentTask, startDate, endDate) {
+
+    this.taskName = taskName;
+    this.parentTask = parentTask;
+    this.startDate = startDate;
+    this.endDate = endDate;
+   }
 
 }

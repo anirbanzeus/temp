@@ -17,10 +17,18 @@ export class TasksComponent implements OnInit {
   thumbLabel = false;
   value = 0;
   vertical = false;
+  taskName: string;
+  parentTask: string;
+  startDate:Date;
+  endDate: Date
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onClickMe() {
+    console.log('111111');
   }
 
 }
