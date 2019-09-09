@@ -8,6 +8,8 @@ import { ViewTasksComponent } from './components/view-tasks/view-tasks.component
 import { TasksComponent } from './components/tasks/tasks.component';
 import { MatSliderModule, MatCard } from '@angular/material';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { HttpClientModule  } from '@angular/common/http';
+import { ApiService } from './core/api.Service';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,10 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
     AppRoutingModule,
     MatSliderModule,
     FormsModule,
-    ReactiveFormsModule    
+    ReactiveFormsModule,
+    HttpClientModule  
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
