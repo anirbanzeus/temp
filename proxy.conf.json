@@ -1,0 +1,10 @@
+{
+  "/tasks": {
+    "target": "http://localhost:8888",
+    "secure": false,
+    "pathRewrite": {
+      "^/tasks": ""
+    },
+      "changeOrigin": true
+    }
+}

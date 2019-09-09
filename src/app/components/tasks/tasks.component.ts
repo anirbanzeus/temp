@@ -47,6 +47,7 @@ export class TasksComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log('step 0');
     if (this.taskForm.invalid) {
       return;
     }
@@ -63,7 +64,7 @@ export class TasksComponent implements OnInit {
     this.apiService.createUser(loginPayload).subscribe(data => {
       if(data.status === 200) {
         window.localStorage.setItem('token', data.result.token);
-        this.router.navigate(['list-user']);
+        this.router.navigate(['list-task']);
       }else {
         this.invalidLogin = true;
         alert(data.message);
