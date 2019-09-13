@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import { FormControl, ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
 import {ApiService} from "../../core/api.Service";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-tasks',
@@ -11,7 +12,7 @@ import {ApiService} from "../../core/api.Service";
 export class TasksComponent implements OnInit {
 
   taskForm: FormGroup;
-
+  durationInSeconds = 2;
   autoTicks = true;
   disabled = false;
   invert = false;
@@ -27,9 +28,12 @@ export class TasksComponent implements OnInit {
   startDate= new FormControl('');
   endDate= new FormControl('');
   invalidLogin: boolean;
+  showMsg: boolean = false;
+  message:string;
+  
   //apiService: new ApiService('');
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router, private _snackBar: MatSnackBar) {
     this.taskForm = this.fb.group({
       taskName:[''],
       parentTask:[''],
@@ -64,11 +68,19 @@ export class TasksComponent implements OnInit {
     this.apiService.createUser(loginPayload).subscribe(data => {
       if(data.status === 200) {
         window.localStorage.setItem('token', data.result.token);
-        this.router.navigate(['list-task']);
+        this.router.navigate(['view-task']);
+        this.showMsg= true;
+        //this.message = data.message;
       }else {
         this.invalidLogin = true;
         alert(data.message);
       }
+    });
+  }
+
+  openSnackBar() {
+    this._snackBar.openFromComponent(TasksComponent, {
+      duration: this.durationInSeconds * 1000,
     });
   }
 

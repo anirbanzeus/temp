@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -6,17 +7,19 @@ import { AppComponent } from './app.component';
 import { BadgeComponent } from './badge/badge.component';
 import { ViewTasksComponent } from './components/view-tasks/view-tasks.component';
 import { TasksComponent } from './components/tasks/tasks.component';
-import { MatSliderModule, MatCard } from '@angular/material';
+import { MatSliderModule, MatCard, MatSnackBarModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule  } from '@angular/common/http';
 import { ApiService } from './core/api.Service';
+import { HeaderComponent } from './components/header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BadgeComponent,
     ViewTasksComponent,
-    TasksComponent
+    TasksComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,9 @@ import { ApiService } from './core/api.Service';
     MatSliderModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule  
+    HttpClientModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule  
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]
