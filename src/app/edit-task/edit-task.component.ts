@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../core/api.Service';
 import { TaskDetail } from '../models/taskdetail';
 
+import {first} from "rxjs/operators";
+
 @Component({
   selector: 'app-edit-task',
   templateUrl: './edit-task.component.html',
@@ -34,6 +36,23 @@ export class EditTaskComponent implements OnInit {
       .subscribe( data => {
         this.editForm.setValue(data.result);
       });
+  }
+
+  onSubmit() {
+    this.apiService.updateTask(this.editForm.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          if(data.status === 200) {
+            alert('Task updated successfully.');
+            this.router.navigate(['view-task']);
+          }else {
+            alert(data.message);
+          }
+        },
+        error => {
+          alert(error);
+        });
   }
 
 }

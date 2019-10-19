@@ -28,9 +28,9 @@ export class ApiService {
     return this.http.post<ApiResponse>(this.baseUrl, task);
   }
 
-  /*updateUser(user: User): Observable<ApiResponse> {
-    return this.http.put<ApiResponse>(this.baseUrl + user.id, user);
-  }*/
+  updateTask(task: TaskDetail): Observable<ApiResponse> {
+    return this.http.put<ApiResponse>(this.baseUrl + task.taskId, task);
+  }
 
   deleteTask(id: number): Observable<ApiResponse> {
     return this.http.delete<ApiResponse>(this.baseUrl + id);
