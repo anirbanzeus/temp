@@ -40,7 +40,7 @@ export class TasksComponent implements OnInit {
     this.taskForm = this.fb.group({
       //id,
       taskName:[''],
-      parent:[''],
+      parentTask:[''],
       startDate:[''],
       endDate:[''],
       taskPriority:['']
@@ -61,22 +61,17 @@ export class TasksComponent implements OnInit {
     }
     console.log('step 1');
     const loginPayload = {
-      id: 0,
+      taskId: 0,
       taskName: this.taskForm.controls.taskName.value,
-      parentTask: this.taskForm.controls.parent.value,
+      parentTask: this.taskForm.controls.parentTask.value,
       startDate: this.taskForm.controls.startDate.value,
       endDate: this.taskForm.controls.endDate.value,
       priority: this.taskForm.controls.taskPriority.value
 
     }
-    this.taskDetail.endDate= this.taskForm.controls.endDate.value;
-    this.taskDetail.parent= this.taskForm.controls.parent.value;
-    this.taskDetail.priority = this.taskForm.controls.taskPriority.value;
-    this.taskDetail.startDate = this.taskForm.controls.startDate.value;
-    this.taskDetail.taskName = this.taskForm.controls.taskName.value;
 
     console.log('step 2');
-    this.apiService.createUser(this.taskDetail).subscribe(data => {
+    this.apiService.createTask(loginPayload).subscribe(data => {
       if(data.status === 200) {
         window.localStorage.setItem('token', data.result.token);
         //this.router.navigate(['main-app']);

@@ -19,7 +19,7 @@
                                         <span class="text-small">1</span>
                                         <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max"
                                             [min]="min" [step]="step" [thumbLabel]="thumbLabel" [tickInterval]="tickInterval"
-                                            [vertical]="vertical" formControlName="taskPriority">
+                                            [vertical]="vertical" formControlName="priority">
                                         </mat-slider>
                                         <span id="beforeImage">30</span>
                                     </div>
@@ -27,7 +27,7 @@
                             </tr>
                             <tr>
                                 <td>Parent Task</td>
-                                <td><input type="text" formControlName="parentTask" class="form-control" name="nato_pf" width="100%" /></td>
+                                <td><input type="text" formControlName="parent.parentTaskName" class="form-control" name="nato_pf" width="100%" /></td>
                             </tr>
                             <tr>
                                 <td>Start Date</td>

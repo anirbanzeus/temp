@@ -23,12 +23,12 @@ export class EditTaskComponent implements OnInit {
       return;
     }
     this.editForm = this.formBuilder.group({
-      // id: [''],
+      taskId: [''],
       taskName: ['', Validators.required],
       parentTask: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
-      taskPriority: ['', Validators.required]
+      priority: ['', Validators.required]
     });
     this.apiService.getTaskById(+taskId)
       .subscribe( data => {

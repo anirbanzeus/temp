@@ -23,7 +23,7 @@ export class ApiService {
     return this.http.get<ApiResponse>(this.baseUrl + id);
   }
 
-  createUser(task: TaskDetail): Observable<ApiResponse> {
+  createTask(task: TaskDetail): Observable<ApiResponse> {
     console.log('step 3');
     return this.http.post<ApiResponse>(this.baseUrl, task);
   }

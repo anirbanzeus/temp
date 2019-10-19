@@ -2,7 +2,7 @@ export class TaskDetail{
 
   taskId: number;
   taskName: string;
-  parent: string;
+  parentTask: string;
   priority: number;
   startDate:Date;
   endDate: Date
@@ -11,7 +11,7 @@ export class TaskDetail{
 
     this.taskId = id;
     this.taskName = taskName;
-    this.parent = parentTask;
+    this.parentTask = parentTask;
     this.startDate = startDate;
     this.endDate = endDate;
     this.priority = priority;
