@@ -1,3 +1,26 @@
-<p></p>
-<p></p>
-<!--<app-tasks></app-tasks>-->
+<div style="width:800px;">
+        <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Id</th>
+            <th>Task</th>
+            <th>Parent</th>
+            <th>Priority</th>
+            <th>Start</th>
+            <th>End</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let task of tasks">
+            <td>{{task?.taskId}}</td>
+            <td>{{task?.taskName}}</td>
+            <td>{{task?.parent.parentTaskName}}</td>
+            <td>{{task?.priority}}</td>
+            <td>{{task?.startDate|date}}</td>
+            <td>{{task?.endDate|date}}</td>
+            <td><button class="btn btn-success" (click)="deleteTask(task)"> Delete</button>
+              <button class="btn btn-success" (click)="editTask(task)" style="margin-left: 20px;"> Edit</button></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>

@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { TasksComponent } from '../tasks/tasks.component';
+import { FormGroup } from '@angular/forms';
+import { TaskDetail } from 'src/app/models/taskdetail';
+import { Router } from '@angular/router';
+import {ApiService} from "../../core/api.Service";
 
 @Component({
   selector: 'app-view-tasks',
@@ -7,11 +11,37 @@ import { TasksComponent } from '../tasks/tasks.component';
   styleUrls: ['./view-tasks.component.css']
 })
 export class ViewTasksComponent implements OnInit {
-  taskLists: Array<TasksComponent>;
 
-  constructor() { }
+  constructor(private router: Router, private apiService: ApiService) { }
 
-  ngOnInit() {
+  viewtaskForm : FormGroup;
+  tasks: TaskDetail[];
+  
+  
+  ngOnInit(): void {
+   /* if(!window.localStorage.getItem('token')) {
+      this.router.navigate(['login']);
+      return;
+    }*/
+    this.apiService.getTasks()
+      .subscribe( data => {this.tasks = data.result;});
   }
+
+  deleteTask(task: TaskDetail): void {
+    this.apiService.deleteTask(task.taskId)
+      .subscribe( data => {
+        this.tasks = this.tasks.filter(u => u !== task);
+      })
+  };
+
+  editTask(task: TaskDetail): void {
+    window.localStorage.removeItem("editTaskId");
+    window.localStorage.setItem("editTaskId", task.taskId.toString());
+    this.router.navigate(['edit-task']);
+  };
+
+  addUser(): void {
+    this.router.navigate(['add-user']);
+  };  
 
 }

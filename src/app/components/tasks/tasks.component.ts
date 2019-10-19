@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import { FormControl, ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
 import {ApiService} from "../../core/api.Service";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TaskDetail } from 'src/app/models/taskdetail';
 
 @Component({
   selector: 'app-tasks',
@@ -11,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class TasksComponent implements OnInit {
 
+  taskDetail: TaskDetail;
   taskForm: FormGroup;
   durationInSeconds = 2;
   autoTicks = true;
@@ -23,6 +25,7 @@ export class TasksComponent implements OnInit {
   thumbLabel = false;
   value = 0;
   vertical = false;
+  id = new FormControl('');
   taskName = new FormControl('');
   parentTask= new FormControl('');
   startDate= new FormControl('');
@@ -35,8 +38,9 @@ export class TasksComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router, private _snackBar: MatSnackBar) {
     this.taskForm = this.fb.group({
+      //id,
       taskName:[''],
-      parentTask:[''],
+      parent:[''],
       startDate:[''],
       endDate:[''],
       taskPriority:['']
@@ -57,18 +61,26 @@ export class TasksComponent implements OnInit {
     }
     console.log('step 1');
     const loginPayload = {
+      id: 0,
       taskName: this.taskForm.controls.taskName.value,
-      parentTask: this.taskForm.controls.parentTask.value,
+      parentTask: this.taskForm.controls.parent.value,
       startDate: this.taskForm.controls.startDate.value,
       endDate: this.taskForm.controls.endDate.value,
       priority: this.taskForm.controls.taskPriority.value
 
     }
+    this.taskDetail.endDate= this.taskForm.controls.endDate.value;
+    this.taskDetail.parent= this.taskForm.controls.parent.value;
+    this.taskDetail.priority = this.taskForm.controls.taskPriority.value;
+    this.taskDetail.startDate = this.taskForm.controls.startDate.value;
+    this.taskDetail.taskName = this.taskForm.controls.taskName.value;
+
     console.log('step 2');
-    this.apiService.createUser(loginPayload).subscribe(data => {
+    this.apiService.createUser(this.taskDetail).subscribe(data => {
       if(data.status === 200) {
         window.localStorage.setItem('token', data.result.token);
-        this.router.navigate(['view-task']);
+        //this.router.navigate(['main-app']);
+        this.ngOnInit();
         this.showMsg= true;
         //this.message = data.message;
       }else {

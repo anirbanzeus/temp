@@ -1,15 +1,17 @@
 export class TaskDetail{
 
+  taskId: number;
   taskName: string;
-  parentTask: string;
+  parent: string;
   priority: number;
   startDate:Date;
   endDate: Date
 
-  constructor(taskName, parentTask,priority,  startDate, endDate) {
+  constructor(id, taskName, parentTask,priority,  startDate, endDate) {
 
+    this.taskId = id;
     this.taskName = taskName;
-    this.parentTask = parentTask;
+    this.parent = parentTask;
     this.startDate = startDate;
     this.endDate = endDate;
     this.priority = priority;

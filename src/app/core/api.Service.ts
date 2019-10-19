@@ -12,15 +12,16 @@ export class ApiService {
 
   /*login(loginPayload) : Observable<ApiResponse> {
     return this.http.post<ApiResponse>('http://localhost:8080/' + 'token/generate-token', loginPayload);
-  }
+  }*/
 
-  getUsers() : Observable<ApiResponse> {
+  getTasks() : Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.baseUrl);
   }
 
-  getUserById(id: number): Observable<ApiResponse> {
+  getTaskById(id: number): Observable<ApiResponse> {
+    console.log('calling to springboot');
     return this.http.get<ApiResponse>(this.baseUrl + id);
-  }*/
+  }
 
   createUser(task: TaskDetail): Observable<ApiResponse> {
     console.log('step 3');
@@ -29,9 +30,9 @@ export class ApiService {
 
   /*updateUser(user: User): Observable<ApiResponse> {
     return this.http.put<ApiResponse>(this.baseUrl + user.id, user);
-  }
-
-  deleteUser(id: number): Observable<ApiResponse> {
-    return this.http.delete<ApiResponse>(this.baseUrl + id);
   }*/
+
+  deleteTask(id: number): Observable<ApiResponse> {
+    return this.http.delete<ApiResponse>(this.baseUrl + id);
+  }
 }

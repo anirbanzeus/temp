@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule  } from '@angular/common/http';
 import { ApiService } from './core/api.Service';
 import { HeaderComponent } from './components/header/header.component';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HeaderComponent } from './components/header/header.component';
     BadgeComponent,
     ViewTasksComponent,
     TasksComponent,
-    HeaderComponent
+    HeaderComponent,
+    EditTaskComponent
   ],
   imports: [
     BrowserModule,
