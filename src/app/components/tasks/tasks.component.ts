@@ -74,10 +74,10 @@ export class TasksComponent implements OnInit {
     this.apiService.createTask(loginPayload).subscribe(data => {
       if(data.status === 200) {
         window.localStorage.setItem('token', data.result.token);
+        alert('Task created successfully.');
         //this.router.navigate(['main-app']);
-        this.ngOnInit();
+        this.taskForm.reset();
         this.showMsg= true;
-        //this.message = data.message;
       }else {
         this.invalidLogin = true;
         alert(data.message);

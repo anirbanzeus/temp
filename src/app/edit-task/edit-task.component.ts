@@ -47,7 +47,7 @@ export class EditTaskComponent implements OnInit {
             alert('Task updated successfully.');
             this.router.navigate(['view-task']);
           }else {
-            alert(data.message);
+            alert('No data to update');
           }
         },
         error => {

@@ -1,4 +1,9 @@
 <div style="width:800px;">
+  <div class="form-group has-success has-feedback">
+    <input class="form-control" type="text" name="search"[(ngModel)]="searchText"
+    autocomplete="off" placeholder="Start typing.....">
+    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+  </div>
         <table class="table table-striped">
           <thead>
           <tr>
@@ -11,15 +16,15 @@
           </tr>
           </thead>
           <tbody>
-          <tr *ngFor="let task of tasks">
+          <tr *ngFor="let task of tasks | filter:searchText">
             <td>{{task?.taskId}}</td>
             <td>{{task?.taskName}}</td>
             <td>{{task?.parent.parentTaskName}}</td>
             <td>{{task?.priority}}</td>
             <td>{{task?.startDate|date}}</td>
             <td>{{task?.endDate|date}}</td>
-            <td><button class="btn btn-success" (click)="deleteTask(task)"> Delete</button>
-              <button class="btn btn-success" (click)="editTask(task)" style="margin-left: 20px;"> Edit</button></td>
+            <td><button class="btn btn-success" (click)="deleteTask(task)"> End Task</button>
+              <button class="btn btn-success" (click)="editTask(task)" style="margin-left: 20px;"> Edit Task</button></td>
           </tr>
           </tbody>
         </table>

@@ -13,6 +13,7 @@ import { HttpClientModule  } from '@angular/common/http';
 import { ApiService } from './core/api.Service';
 import { HeaderComponent } from './components/header/header.component';
 import { EditTaskComponent } from './edit-task/edit-task.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { EditTaskComponent } from './edit-task/edit-task.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatSnackBarModule,
-    BrowserAnimationsModule  
+    BrowserAnimationsModule,
+    Ng2SearchPipeModule  
   ],
   providers: [ApiService],
   bootstrap: [AppComponent]

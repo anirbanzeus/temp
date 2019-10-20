@@ -19,10 +19,6 @@ export class ViewTasksComponent implements OnInit {
   
   
   ngOnInit(): void {
-   /* if(!window.localStorage.getItem('token')) {
-      this.router.navigate(['login']);
-      return;
-    }*/
     this.apiService.getTasks()
       .subscribe( data => {this.tasks = data.result;});
   }
@@ -35,13 +31,13 @@ export class ViewTasksComponent implements OnInit {
   };
 
   editTask(task: TaskDetail): void {
-    window.localStorage.removeItem("editTaskId");
-    window.localStorage.setItem("editTaskId", task.taskId.toString());
+    //window.localStorage.removeItem("editTaskId");
+   // window.localStorage.setItem("editTaskId", task.taskId.toString());
     this.router.navigate(['edit-task']);
   };
 
-  addUser(): void {
-    this.router.navigate(['add-user']);
+  addTask(): void {
+    this.router.navigate(['add-task']);
   };  
 
 }
