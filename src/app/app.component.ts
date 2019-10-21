@@ -7,5 +7,5 @@ import { FormGroup, FormBuilder} from '@angular/forms'
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'test-app';
+  title = 'Task manager';
 }

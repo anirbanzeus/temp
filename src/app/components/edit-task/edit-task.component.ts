@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ApiService } from '../core/api.Service';
-import { TaskDetail } from '../models/taskdetail';
+import { ApiService } from '../../core/api.Service';
+import { TaskDetail } from '../../models/taskdetail';
 
 import {first} from "rxjs/operators";
 

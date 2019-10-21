@@ -28,4 +28,57 @@
           </tr>
           </tbody>
         </table>
+        <div *ngIf = "!isShow" class="row container-fluid"  id="divshow" style="margin: 0 auto; width:855px;">
+          <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+            <div class="content">
+                    <!--<div class="row"  *ngIf="showMsg">
+                            <div class="col-xs-12">{{openSnackBar()}}</div>
+                          </div>-->
+                <div class="card border-secondary mb-3" style="max-width: 26rem;">
+                    <div class="card bg-light" >
+                        <div class="card-body px-3">
+                            <table class="table borderless">
+                                <tbody>
+                                    <tr>
+                                        <td>Task</td>
+                                        <td><input type="text" placeholder="Name of task" formControlName="taskName" class="form-control" name="taskName" width="100%" readonly="true" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td vertical-align="middle"> Priority</td>
+                                         <td>
+                                            <div style="height: 32px; overflow:hidden;">
+                                                <span class="text-small">1</span>
+                                                <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max"
+                                                    [min]="min" [step]="step" [thumbLabel]="thumbLabel" [tickInterval]="tickInterval"
+                                                    [vertical]="vertical" formControlName="priority">
+                                                </mat-slider>
+                                                <span id="beforeImage">30</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Parent Task</td>
+                                        <td><input type="text" formControlName="parentTask" class="form-control" name="nato_pf" width="100%" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Start Date</td>
+                                        <td><input type="date" formControlName="startDate" class="form-control" name="nato_pf" width="100%" /></td>
+                                    </tr>
+                                    <tr>
+                                        <td>End Date</td>
+                                        <td><input type="date" formControlName="endDate" class="form-control" name="nato_pf" width="100%" />
+                                            <p></p>
+                                            <button type="submit" class="btn btn-primary btn-md mr-3 ml-4" style="padding:5px;">Update</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+        </div>
       </div>
+      
+      
