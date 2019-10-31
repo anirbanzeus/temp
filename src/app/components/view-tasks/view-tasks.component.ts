@@ -8,7 +8,7 @@ import {ApiService} from "../../core/api.Service";
 import {first} from "rxjs/operators";
 
 @Component({
-  selector: 'app-view-tasks',
+  selector: 'view-tasks',
   templateUrl: './view-tasks.component.html',
   styleUrls: ['./view-tasks.component.css']
 })
@@ -24,14 +24,15 @@ export class ViewTasksComponent implements OnInit {
   
   
   ngOnInit(): void {
-    this.isShow = true;
-    //this.viewtaskForm.reset();
+   this.isShow = true;
     this.apiService.getTasks()
-      .subscribe( data => {this.tasks = data.result;});
+      .subscribe( data => {
+        this.tasks = data.result;
+      });
   }
 
-  deleteTask(task: TaskDetail): void {
-    this.apiService.deleteTask(task.taskId)
+  endTask(task: TaskDetail): void {
+    this.apiService.updateTaskToComplete(task)
       .subscribe( data => {
         this.tasks = this.tasks.filter(u => u !== task);
       })
@@ -78,5 +79,14 @@ export class ViewTasksComponent implements OnInit {
         error => {
           alert(error);
         });
+  }
+
+  searchForProjects(name){
+    console.log('Here');
+    this.isShow = true;
+    this.apiService.getTaskByProjectName(name)
+      .subscribe( data => {
+        this.tasks = data.result;
+      });
   }
 }

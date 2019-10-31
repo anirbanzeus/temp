@@ -1,0 +1,14 @@
+.button-wrapper .btn {
+    margin-bottom:25px;
+}
+.btn-block {
+    padding: 5px 10px; 
+    /* define values in pixels / Percentage or em. whatever suits 
+       your requirements */
+}
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(27, 24, 24, 0.959);
+  }

@@ -3,14 +3,35 @@
         <!--<div class="row"  *ngIf="showMsg">
                 <div class="col-xs-12">{{openSnackBar()}}</div>
               </div>-->
+              <div class="hidden">
+                    <input type="hidden" formControlName="taskId" placeholder="id" name="taskId" class="form-control" id="id">
+            </div>
+            <div class="hidden">
+                    <input type="hidden" formControlName="projectId" placeholder="id" name="projectId" class="form-control" id="id">
+            </div>
     <div class="card border-secondary mb-3" style="max-width: 26rem;">
         <div class="card bg-light" >
             <div class="card-body px-3">
                 <table class="table borderless">
                     <tbody>
+                            <tr>
+                                    <td>Project</td>
+                                    <td><div class="row">
+                                        <div class="col-md-8">
+                                          <input type="text" readonly formControlName="projectName" class="form-control" name="projectName"size="35" />
+                                        </div>
+                                        <div class="col-md-1">
+                                          <button type="button" class="btn btn-outline-dark btn-md" data-toggle="modal" data-target="#myProjectModal">Search</button>
+                                        </div>
+                                      </div></td>
+                                </tr>
                         <tr>
                             <td>Task</td>
                             <td><input type="text" placeholder="Name of task" formControlName="taskName" class="form-control" name="taskName" width="100%" /></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td> <input type="checkbox" [(ngModel)]="isChecked" (change)="checkValue(isChecked?'A':'B')"formControlName="setAsParent"/>Parent</td>
                         </tr>
                         <tr>
                             <td vertical-align="middle"> Priority</td>
@@ -27,21 +48,53 @@
                         </tr>
                         <tr>
                             <td>Parent Task</td>
-                            <td><input type="text" formControlName="parentTask" class="form-control" name="parentTask" width="100%" /></td>
+                            <!-- <td><input type="text" formControlName="parentTask" class="form-control" name="parentTask" width="100%" /></td> -->
+                            <td><div class="row">
+                                    <div class="col-md-8">
+                                      <input type="text" readonly formControlName="parentTask" class="form-control" name="parentTask"size="35" />
+                                    </div>
+                                    <div class="col-md-1">
+                                      <button  [disabled]="checked" type="button" class="btn btn-outline-dark btn-md" data-toggle="modal" data-target="#myParentTaskModal">Search</button>
+                                    </div>
+                                  </div></td>
                         </tr>
                         <tr>
                             <td>Start Date</td>
                             <td><input type="date" formControlName="startDate" class="form-control" name="startDate" width="100%" /></td>
                         </tr>
                         <tr>
-                            <td>End Date</td>
-                            <td><input type="date" formControlName="endDate" class="form-control" name="endDate" width="100%" />
-                                <p></p>
-                                <button type="submit" class="btn btn-primary btn-md mr-3 ml-4" style="padding:5px;">Add
-                                    Task</button>
-                                <button type="button" class="btn btn-secondary btn-md ml-4" type="reset">Reset</button>
-                            </td>
-                        </tr>
+                                <td>End Date</td>
+                                <td><input type="date" [disabled]="isDisabled" formControlName="endDate" class="form-control" name="endDate" width="100%" />
+                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>User</td>
+                                <td><div class="row">
+                                    <div class="col-md-8">
+                                      <input type="text" readonly formControlName="userName" class="form-control" name="userName"size="35" />
+                                    </div>
+                                    <div class="col-md-1">
+                                      <button [disabled]="checked" type="button" class="btn btn-outline-dark btn-md" data-toggle="modal" data-target="#myModal">Search</button>
+                                    </div>
+                                  </div></td>
+                            </tr>
+                            <tr>
+                                    <td></td>
+                                    <td>
+                                        <div *ngIf = "isCreate">                                            
+                                            <button type="submit" class="btn btn-primary btn-md mr-3 ml-4" style="padding:5px;">Add Task</button>                                        
+                                            <button type="button" class="btn btn-secondary btn-md ml-4" type="reset">Reset</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div *ngIf = "isEdit" class="wrapper">
+                                            <button type="submit" class="btn btn-primary btn-md mr-3 ml-4" style="padding:10px;">Update</button>                                        
+                                        </div>
+                                    </td>
+                                </tr>
                     </tbody>
                 </table>
             </div>
@@ -49,3 +102,7 @@
     </div>
 </div>
 </form>
+<app-modal-project (selection)="mapProjectHandler($event)"></app-modal-project>
+<app-modal (selection)="mapUserHandler($event)"></app-modal>
+<app-modal-task (selection)="mapParentTaskHandler($event)"></app-modal-task>
+<view-tasks></view-tasks>

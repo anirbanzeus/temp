@@ -1,3 +1,21 @@
 .content {
     width:108%;
 }
+.table th {
+    text-align: center;   
+ }
+ .table-view {
+    text-align: center;   
+ }
+ th {
+    background-color: rgba(0, 0, 255, 0.493);
+    color: white;
+} 
+.background {
+    background-color: rgba(197, 197, 211, 0.37);
+    color: rgb(12, 12, 12);
+}
+.background-dark {
+    background-color: rgba(0, 0, 255, 0.493);
+    color: white;
+}

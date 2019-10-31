@@ -1,0 +1,33 @@
+<div style="width:100%;">
+    <hr/>
+        <div class="form-group has-success has-feedback">
+                <input class="form-control" type="text" name="search"[(ngModel)]="searchText"
+                autocomplete="off" placeholder="Start typing.....">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                  <th class="projectName"><a ng-click="sort_by('projectName')">Name<i class="fa fa-sort"></i></a></th>
+                  <th>Priority</th>
+                  <th>Tasks</th>
+                  <th>Completed</th>
+                  <th>Start</th>
+                  <th>End</th>
+                  <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let project of projects | filter:searchText">
+                  <td>{{project?.projectName}}</td>
+                  <td>{{project?.projectPriority}}</td>
+                  <td></td>
+                  <td></td>
+                  <td>{{project?.startDate|date}}</td>
+                  <td>{{project?.endDate|date}}</td>
+                  <td><button class="btn btn-primary" (click)="deleteProject(project)"> Suspend</button>
+                    <button class="btn btn-primary" (click)="editProject(project)" style="margin-left: 20px;">Update</button></td>
+                </tr>
+            </tbody>
+        </table>
+</div>

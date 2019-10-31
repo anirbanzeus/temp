@@ -1,0 +1,89 @@
+<form [formGroup]="projectForm" (ngSubmit)="onSubmit()">
+        <div class="hidden">
+                <input type="hidden" formControlName="projectId" placeholder="id" name="projectId" class="form-control" id="id">
+        </div>
+        <div class="content">
+                <!--<div class="row"  *ngIf="showMsg">
+                        <div class="col-xs-12">{{openSnackBar()}}</div>
+                      </div>-->
+            <div class="card border-secondary mb-3" style="max-width: 26rem;">
+                <div class="card bg-light" >
+                    <div class="card-body px-3">
+                        <table class="table borderless">
+                            <tbody>
+                                <tr>
+                                    <td>Name</td>
+                                    <td><input type="text" placeholder="Name of project" formControlName="projectName" class="form-control" name="projectName" width="100%"[ngClass]="{ 'is-invalid': submitted && f.projectName.errors }" /></td>
+                                    <div *ngIf="submitted && f.projectName.errors" class="invalid-feedback">
+                                            <div *ngIf="f.projectName.errors.required">Project Name is required</div>
+                                        </div>
+                                </tr>
+                                <tr>
+                                    <td vertical-align="middle"> Priority</td>
+                                     <td>
+                                        <div style="height: 32px; overflow:hidden;">
+                                            <span class="text-small">1</span>
+                                            <mat-slider class="example-margin" [disabled]="disabled" [invert]="invert" [max]="max"
+                                                [min]="min" [step]="step" [thumbLabel]="thumbLabel" [tickInterval]="tickInterval"
+                                                [vertical]="vertical" formControlName="projectPriority">
+                                            </mat-slider>
+                                            <span id="beforeImage">30</span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Set Date</td>
+                                    <td>
+                                        <input type="checkbox" [(ngModel)]="isChecked" (change)="checkValue(isChecked?'A':'B')"formControlName="selectDates" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Start Date</td>
+                                    <td><input type="date" formControlName="startDate" class="form-control" name="startDate" width="100%"/></td>
+                                </tr>
+                                <tr>
+                                    <td>End Date</td>
+                                    <td><input type="date" formControlName="endDate" class="form-control" name="endDate" width="100%"/>
+                                        
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Manager</td>
+                                    <td><div class="row">
+                                        <div class="col-md-8">
+                                          <input type="text" readonly formControlName="managerName" class="form-control" name="managerName"size="35" />
+                                        </div>
+                                        <div class="col-md-1">
+                                          <button type="button" class="btn btn-outline-dark btn-md" data-toggle="modal" data-target="#myModal">Search</button>
+                                        </div>
+                                      </div></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <div *ngIf = "isCreate">                                            
+                                            <button type="submit" class="btn btn-primary btn-md mr-3 ml-4" style="padding:5px;">Add Project</button>                                        
+                                            <button type="button" class="btn btn-secondary btn-md ml-4" type="reset">Reset</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div *ngIf = "isEdit" class="wrapper">
+                                            <button type="submit" class="btn btn-primary btn-md mr-3 ml-4" style="padding:10px;">Update</button>                                        
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+    </form>
+    <view-project (updateProject)="updateProjectHandler($event)" [update]=updatedProject></view-project>
+    <app-modal (selection)="mapUserHandler($event)"></app-modal>
+    

@@ -1,0 +1,52 @@
+<div style="width:100%;">
+    <hr/>
+    <div class="form-group has-success has-feedback">
+            <input class="form-control" type="text" name="search"[(ngModel)]="searchText"
+            autocomplete="off" placeholder="Start typing.....">
+            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+    </div>
+    <table class="table table-striped">
+            <tr  *ngFor="let user of users | filter:searchText">
+                <td>
+                    <ul class="list-group cProductsList"> 
+                            <li class="list-group-item d-flex justify-content-between"><p class="p-0 m-0 flex-grow-1">{{user?.firstName}}</p> 
+                               
+                            </li>
+                           <li class="list-group-item d-flex justify-content-between"><p class="p-0 m-0 flex-grow-1">{{user?.lastName}}</p>  
+                            <li class="list-group-item d-flex justify-content-between"><p class="p-0 m-0 flex-grow-1">{{user?.empId}}</p>  
+                               
+                            </li> 
+                </ul>
+            </td>
+            <td>
+                    <div class = "button-wrapper btn-group-justified btn-group-lg btn-group-vertical">
+                        <button type = "button" class = "btn btn-primary"(click)="editUser(user)" >Edit</button>
+                        <button type = "button" class = "btn btn-primary" >Delete</button>
+                    </div>
+            </td>
+            </tr>  
+    </table>
+    
+    <!-- <table class="table table-striped">
+        <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Employee Id</th>
+              <th>Tasks</th>
+              <th>Projects</th>              
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users | filter:searchText">
+              <td>{{user?.firstName}}</td>
+              <td>{{user?.lastName}}</td>
+              <td>{{user?.empId}}</td>
+              <td></td>
+              <td></td>              
+              <td><button class="btn btn-success" (click)="deleteUser(user)"> Suspend</button>
+                <button class="btn btn-success" (click)="editUser(user)" style="margin-left: 20px;">Update</button></td>
+            </tr>
+        </tbody>
+    </table> -->
+</div>

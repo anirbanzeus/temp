@@ -1,0 +1,36 @@
+<div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        
+          <!-- Modal content-->
+          <div class="modal-content">
+                <div class="modal-header">
+                            <h4 class="modal-title">Select user</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      </div>
+            <div class="modal-body">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col"></th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>                            
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of users | filter:searchText">
+                        <label>                            
+                            <input type="radio" id='regular' name="optradio" style="vertical-align: middle;" (change)="handleChange(user)" [value]="user.id">
+                        </label>    
+                        <td>{{user?.firstName}}</td>
+                        <td>{{user?.lastName}}</td>                                                        
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>

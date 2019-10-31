@@ -1,0 +1,58 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+        <div class="hidden">
+                <input type="hidden" formControlName="userId" placeholder="id" name="userId" class="form-control" id="id">
+        </div>
+        <div class="content">
+                <!--<div class="row"  *ngIf="showMsg">
+                        <div class="col-xs-12">{{openSnackBar()}}</div>
+                      </div>-->
+            <div class="card border-secondary mb-3" style="max-width: 26rem;">
+                <div class="card bg-light" >
+                    <div class="card-body px-3">
+                        <table class="table borderless">
+                            <tbody>
+                                <tr>
+                                    <td>First Name</td>
+                                    <td><input type="text" formControlName="firstName" class="form-control" name="firstName" width="100%"[ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" /></td>
+                                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                                            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                                        </div>
+                                </tr>
+                                <tr>
+                                    <td vertical-align="middle">Last Name</td>
+                                    <td><input type="text" formControlName="lastName" class="form-control" name="lastName" width="100%"[ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" /></td>
+                                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                                            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                                        </div>
+                                </tr>
+                                <tr>
+                                    <td>Emp Id</td>
+                                    <td><input type="text" formControlName="empId" class="form-control" name="empId" width="100%"[ngClass]="{ 'is-invalid': submitted && f.empId.errors }" /></td>
+                                    <div *ngIf="submitted && f.empId.errors" class="invalid-feedback">
+                                            <div *ngIf="f.empId.errors.required">Emp Id is required</div>
+                                        </div>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <div *ngIf = "isCreate">                                            
+                                            <button type="submit" class="btn btn-primary btn-md mr-3 ml-4" style="padding:5px;">Add User</button>                                        
+                                            <button type="button" class="btn btn-secondary btn-md ml-4" type="reset">Reset</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div *ngIf = "isEdit" class="wrapper">
+                                            <button type="submit" class="btn btn-primary btn-md mr-3 ml-4" style="padding:10px;">Update</button>                                        
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <view-user (updateUser)="updateUserHandler($event)" [update]=updatedUser></view-user>
