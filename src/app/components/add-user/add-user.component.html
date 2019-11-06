@@ -2,11 +2,12 @@
         <div class="hidden">
                 <input type="hidden" formControlName="userId" placeholder="id" name="userId" class="form-control" id="id">
         </div>
-        <div class="content">
+    <div class="row pad-left">
+        <div class="col-md-5">
                 <!--<div class="row"  *ngIf="showMsg">
                         <div class="col-xs-12">{{openSnackBar()}}</div>
                       </div>-->
-            <div class="card border-secondary mb-3" style="max-width: 26rem;">
+            <div class="card border-secondary">
                 <div class="card bg-light" >
                     <div class="card-body px-3">
                         <table class="table borderless">
@@ -54,5 +55,6 @@
                 </div>
             </div>
         </div>
+    </div>
     </form>
     <view-user (updateUser)="updateUserHandler($event)" [update]=updatedUser></view-user>

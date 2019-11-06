@@ -50,8 +50,9 @@ export class ViewTasksComponent implements OnInit {
           }
         }
         if(!this.isUpdate){
-          this.tmp =  changes[propName].currentValue;
-          this.tasks.push(this.tmp);
+          //this.tmp =  changes[propName].currentValue;
+          //this.tasks.push(this.tmp);
+          this.ngOnInit();
         }
       }
     }
