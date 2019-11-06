@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import {Router} from "@angular/router";
-import { FormControl, ReactiveFormsModule, FormGroup, FormBuilder, FormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, FormGroup, FormBuilder, FormsModule, Validators } from '@angular/forms';
 import {ApiService} from "../../core/api.Service";
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TaskDetail } from 'src/app/models/taskdetail';
@@ -12,7 +12,10 @@ import { UserDetail } from 'src/app/models/userDetail';
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.css']
 })
-export class TasksComponent implements OnInit {
+export class TasksComponent implements OnInit, OnChanges {
+  ngOnChanges(changes: import("@angular/core").SimpleChanges): void {
+    throw new Error("Method not implemented.");
+  }
 
   taskDetail: TaskDetail;
   
@@ -44,13 +47,14 @@ export class TasksComponent implements OnInit {
   isCreate:boolean = true;
   isEdit:boolean = false;
   isValidDate:boolean;
+  submitted = false;
   error:any={isError:false,errorMessage:''};
   
   constructor(private fb: FormBuilder, private apiService: ApiService, private router: Router, private _snackBar: MatSnackBar) {
     this.taskForm = this.fb.group({
       projectId:[''],
       taskId:[''],
-      taskName:[''],
+      taskName:['', Validators.required],
       parentTask:[''],
       startDate:[''],
       endDate:[''],
@@ -64,13 +68,17 @@ export class TasksComponent implements OnInit {
   ngOnInit() {
   }
 
+  get f() { return this.taskForm.controls; }
+
   onClickMe() {    
     console.log(this.taskForm.controls.taskPriority.value);
   }
 
   onSubmit() {
+    this.submitted = true;
     this.isValidDate = this.validateDates(this.taskForm.controls.startDate.value, this.taskForm.controls.endDate.value);
     if (this.taskForm.invalid) {
+      console.log('Invalid');
       return;
     }
 
@@ -78,6 +86,9 @@ export class TasksComponent implements OnInit {
       alert('End date greater than start date');
       return;
     }
+
+    
+
     const loginPayload = {
       taskId: this.taskForm.controls.taskId.value,
       taskName: this.taskForm.controls.taskName.value,
@@ -88,9 +99,13 @@ export class TasksComponent implements OnInit {
       userName: this.taskForm.controls.userName.value,
       projectName: this.taskForm.controls.projectName.value,
       parent: this.taskForm.controls.setAsParent.value,
-      projectId: this.taskForm.controls.projectId.value
+      projectId: this.taskForm.controls.projectId.value,
+      status: 'Running'
     }
 
+    if(loginPayload.priority == ''){
+      loginPayload.priority=1;
+    }
     this.updatedTask = loginPayload;
 
     if(this.isEdit){
@@ -168,6 +183,25 @@ validateDates(sDate: string, eDate: string){
     this.isValidDate = false;
   }
   return this.isValidDate;
+}
+
+updateTaskHandler(taskEvent: TaskDetail){
+  this.taskForm.controls['taskId'].setValue(taskEvent.taskId);
+  this.taskForm.controls['projectName'].setValue(taskEvent.projectName);
+  this.taskForm.controls['taskName'].setValue(taskEvent.taskName);
+  this.taskForm.controls['startDate'].setValue(taskEvent.startDate);
+  this.taskForm.controls['endDate'].setValue(taskEvent.endDate);
+  this.taskForm.controls['taskPriority'].setValue(taskEvent.priority);
+  this.taskForm.controls['setAsParent'].setValue(taskEvent.parent);
+  if(taskEvent.parent){
+    this.taskForm.get('taskPriority').disable();
+    this.taskForm.get('startDate').disable();
+    this.taskForm.get('endDate').disable();
+  }
+  this.taskForm.controls['parentTask'].setValue(taskEvent.parentTask);
+  this.taskForm.controls['userName'].setValue(taskEvent.userName);
+  this.isCreate = false;
+  this.isEdit = true;  
 }
 
 

@@ -83,11 +83,18 @@ export class AddProjectComponent implements OnInit, OnChanges {
       startDate: this.projectForm.controls.startDate.value,
       endDate: this.projectForm.controls.endDate.value,
       projectPriority: this.projectForm.controls.projectPriority.value,
-      managerName: this.projectForm.controls.managerName.value
+      managerName: this.projectForm.controls.managerName.value,
+      taskCount:0,
+      completedTaskCount: 0,
+      projectStatus: 'Running'
     }
+
+    if(loginPayload.projectPriority == ''){
+      loginPayload.projectPriority=1;
+    }
+    
     this.updatedProject = loginPayload;
     if(this.isEdit){
-     // loginPayload.projectId = 
       this.apiService.updateProject(this.updatedProject).subscribe(data => {
         if(data.status === 200) {
           window.localStorage.setItem('token', data.result.token);
@@ -104,11 +111,12 @@ export class AddProjectComponent implements OnInit, OnChanges {
         }
       });
     }else{
-      this.apiService.createProject(loginPayload).subscribe(data => {
+      this.apiService.createProject(this.updatedProject).subscribe(data => {
         if(data.status === 200) {
           window.localStorage.setItem('token', data.result.token);
           alert('Project created successfully.');
           this.projectForm.reset();
+          this.ngOnInit();
           this.showMsg= true;
         }else {
           this.invalidLogin = true;

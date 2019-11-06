@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ViewTasksComponent } from './components/view-tasks/view-tasks.component';
 import { TasksComponent } from './components/tasks/tasks.component';
-import { MatSliderModule, MatCard, MatSnackBarModule, MatCheckboxModule, MatTableModule } from '@angular/material';
+import { MatSliderModule, MatCard, MatSnackBarModule, MatCheckboxModule, MatTableModule,MatSortModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule  } from '@angular/common/http';
 import { ApiService } from './core/api.Service';
@@ -50,7 +50,8 @@ import { SortService } from './core/SortService';
     BrowserAnimationsModule,
     Ng2SearchPipeModule  ,
     MatCheckboxModule,
-    MatTableModule
+    MatTableModule,
+    MatSortModule
   ],
   providers: [ApiService, ViewProjectComponent, SortService],
   bootstrap: [AppComponent]

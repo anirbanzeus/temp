@@ -9,8 +9,9 @@ export class TaskDetail{
   userName:string;
   projectName:string;
   parent:boolean
+  status: string
 
-  constructor(id, taskName, parentTask,priority,  startDate, endDate, userName, projectName, parent) {
+  constructor(id, taskName, parentTask,priority,  startDate, endDate, userName, projectName, parent, status) {
 
     this.taskId = id;
     this.taskName = taskName;
@@ -21,6 +22,7 @@ export class TaskDetail{
     this.projectName = projectName;
     this.userName = userName;
     this.parent = parent;
+    this.status = status;
    }
 
 }

@@ -1,0 +1,24 @@
+.divfill {
+    background-color: rgba(35, 35, 88, 0.815);
+    color: white;
+  }
+/* not active */
+.nav-pills .pill-3 .nav-link:not(.active) {
+  background-color: rgba(35, 35, 88, 0.815);
+  color: white;
+}
+
+
+/* active (faded) */
+.nav-pills .pill-3 .nav-link {
+  background-color: rgba(11, 98, 179, 0.856);  
+  color: white;
+}
+
+.position_img{
+  margin-left: 650px;
+}
+
+.header-fill{
+  background-color: rgba(35, 35, 88, 0.349);
+}

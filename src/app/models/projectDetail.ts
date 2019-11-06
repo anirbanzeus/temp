@@ -5,9 +5,12 @@ export class ProjectDetail{
     projectPriority: number;
     startDate:Date;
     endDate: Date;
-    managerName: number
+    managerName: number;
+    taskCount: number;
+    completedTaskCount: number;
+    projectStatus: string
   
-    constructor(id, taskName, parentTask,priority,  startDate, endDate, managerName) {
+    constructor(id, taskName, parentTask,priority,  startDate, endDate, managerName, taskCount, completedTaskCount, projectStatus) {
   
       this.projectId = id;
       this.projectName = taskName;
@@ -15,6 +18,9 @@ export class ProjectDetail{
       this.endDate = endDate;
       this.projectPriority = priority;
       this.managerName = managerName;
+      this.taskCount = taskCount;
+      this.completedTaskCount = completedTaskCount;
+      this.projectStatus = projectStatus;
      }
   
   }

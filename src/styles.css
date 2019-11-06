@@ -13,15 +13,14 @@
     background: red*/
    
   }
-  .content {
-    padding-left:6%;
-    width:68%;
-}
 .example-margin {
   margin: 0 0px;
   width: 5%;
 }
 
+.table{
+  overflow-x: auto
+}
 .table th {
   text-align: center;   
 }
@@ -29,10 +28,29 @@
   text-align: center;   
 }
 th {
-  background-color: rgba(0, 0, 255, 0.493);
+  background-color: rgba(35, 35, 88, 0.815);
+  color: white;
+  text-align: center; 
+} 
+.divfill {
+  background-color: rgba(35, 35, 88, 0.815);
   color: white;
 } 
 .background {
   background-color: rgba(197, 197, 211, 0.664);
   color: rgb(12, 12, 12);
+}
+
+.btn-primary {
+  background-color: rgb(88, 88, 88) !important;
+  border-color:  rgb(147, 145, 150) !important;
+}
+
+.btn-primary:hover {
+  background-color: rgb(179, 177, 182) !important;
+  border-color:  rgb(147, 145, 150) !important;
+}
+
+.btn-secondary {
+  background-color: rgb(0, 0, 0) !important;
 }

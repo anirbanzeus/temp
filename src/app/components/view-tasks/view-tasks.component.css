@@ -8,7 +8,7 @@
     text-align: center;   
  }
  th {
-    background-color: rgba(0, 0, 255, 0.493);
+    background-color: rgba(35, 35, 88, 0.815);
     color: white;
 } 
 .background {
@@ -16,6 +16,6 @@
     color: rgb(12, 12, 12);
 }
 .background-dark {
-    background-color: rgba(0, 0, 255, 0.493);
+    background-color: rgba(35, 35, 88, 0.815);
     color: white;
 }

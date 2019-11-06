@@ -1,5 +1,6 @@
 <div style="width:100%;">
     <div class="form-group has-success has-feedback">
+      <br>
       <div>
               <table class="table">
                       <tr>
@@ -17,28 +18,28 @@
               </table>
       </div>
     </div>
-          <table class="table table-striped">
+          <table class="table table-striped" matSort (matSortChange)="sortData($event)">
             <thead>
             <tr>
               <th>Task</th>
               <th>Parent</th>
-              <th>Priority</th>
-              <th>Start</th>
-              <th>End</th>
-              <th>Status</th>
-              <th colspan="2" align="center">Actions</th>
+              <th mat-sort-header="priority">Priority</th>
+              <th mat-sort-header="startDate">Start</th>
+              <th mat-sort-header="endDate">End</th>
+              <th mat-sort-header="status">Status</th>
+              <th>Actions</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let task of tasks">
-              <td class="background">{{task?.taskName}}</td>
+              <td>{{task?.taskName}}</td>
               <td>{{task?.parentTask}}</td>
               <td>{{task?.priority}}</td>
               <td>{{task?.startDate|date}}</td>
               <td>{{task?.endDate|date}}</td>
-              <td></td>
-              <td class="background"><button class="btn btn-primary" (click)="endTask(task)"style="margin-right: 50px;"> End Task</button>
-                <button class="btn btn-primary" (click)="editTask(task)" style="margin-left: 10px;"> Edit</button></td>
+              <td>{{task?.status}}</td>
+              <td><button class="btn btn-primary" (click)="endTask(task)"> End Task</button>
+                <button class="btn btn-primary" (click)="editTask(task)"> Edit</button></td>
             </tr>
             </tbody>
           </table>
